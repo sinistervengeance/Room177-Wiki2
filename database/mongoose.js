@@ -41,7 +41,13 @@ module.exports = {
     },
     addWikiPage: async function(data){
         //checks to see if data is empty
-        if(!data.category)return "2";
+        var val =0
+        if(!data.category){console.error("No Category");val ++}
+        if(!data.title){console.error("No Title");val++}
+        if(!data.author){console.error("No Author");val++}
+        if(!data.content){console.error("No Content");val++}
+        if(val > 0)return "5"
+
         //checks to see if data exist
         WikiPage.findOne({
             Category : data.category

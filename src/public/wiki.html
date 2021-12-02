@@ -3,16 +3,16 @@
 </div>
 <div class="form-group">
     <label for="category">Select Category</label>
-    <input list="category" class="form-control" type="text">
+    <input id="categorytext" list="category" class="form-control" type="text" placeholder="Type here for new category">
     <datalist id="category">
 
     </datalist>
   </div>
   <div class="form-group">
     <label for="input">Author</label>
-    <input class="form-control" id="Author" placeholder="ex: Your name here">
+    <input class="form-control" id="author" placeholder="ex: Your name here">
   </div>
-  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+  <button type="submit" class="btn btn-primary mb-2" onclick="sendDataToDB()">Submit</button>
 <script src="/public/ckeditor5/build/ckeditor.js"></script>
 
 <script src="/Public/js/wiki.js"></script>

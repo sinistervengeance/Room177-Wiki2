@@ -1,11 +1,15 @@
 var g = [];
-
+const bodyParser = require('body-parser')
 const {url,database,pass,user} = require('./security.json')
 const express = require('express')
+
 g.mongoose = require('mongoose')
 g.app = express()
 //Website port
 g.port = 80 
+
+g.app.use(bodyParser.json()) 
+g.app.use(bodyParser.urlencoded({ extended: true }))
 
 
 main().catch(err =>{console.error("Wiki failed to start");console.log(err)})
