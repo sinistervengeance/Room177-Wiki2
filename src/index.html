@@ -17,13 +17,13 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" href="#" onclick="load('home','home')">Home</a>
+                <a class="nav-link active" href="#" onclick="load('Home','Home')">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="#" onclick="content()">Content</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#" onclick="load('home','about')">About</a>
+                <a class="nav-link active" href="#" onclick="load('Home','About')">About</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="#" onclick="make()">Make New Page</a>
@@ -51,7 +51,7 @@
 </body>
 <script src="/public/ckeditor5/build/ckeditor.js"></script>
 <script>
-  load("home","home")
+  load("Home","Home")
   function make(){
     $('#test').hide();
     document.getElementById('Content').innerHTML = (`<div class='d-flex justify-content-center'><div class='spinner-border' role='status' style='width: 6rem; height: 6rem;'><span class='sr-only'></span></div></div>`);

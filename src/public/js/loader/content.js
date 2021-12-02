@@ -4,13 +4,14 @@ async function content(){
     try{
         document.getElementById("Content").innerHTML = (`<div class="d-flex justify-content-center"><div class="spinner-border" role="status" style="width: 6rem; height: 6rem;"><span class="sr-only"></span></div></div>`)
         var content = await fetch(`/api/content`).then(response => response.json())
+        console.log(content)
         var P =""
-        content.Data.forEach(element => {
+        content.forEach(element => {
         var S =""
-        element.subcategory.forEach(e => {
-            S = S + `<li><a href="#" onClick="load('${element.category}','${e}')">${e}</a></li>\n`
+        element.Titles.forEach(e => {
+            S = S + `<li><a href="#" onClick="load('${element.Category}','${e}',true)">${e}</a></li>\n`
         })
-        P = P + `<h3>${element.category}</h3>\n<ul>${S}</ul>`
+        P = P + `<h3>${element.Category}</h3>\n<ul>${S}</ul>`
         });
         document.getElementById("Content").innerHTML = P
     }catch(err){
