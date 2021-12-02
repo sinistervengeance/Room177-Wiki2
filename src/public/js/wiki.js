@@ -28,7 +28,7 @@ ClassicEditor
 		'indent',
 		'alignment',
 		'|',
-		//'imageUpload',
+		'imageUpload',
 		'blockQuote',
 		'insertTable',
 		'mediaEmbed',
