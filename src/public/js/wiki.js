@@ -85,18 +85,18 @@ async function selector(){
 async function sendDataToDB(){
 	var dataToSend = ckeditor.getData()
 
-	var [dataTitle, dataContent] = dataToSend.split("</h1>")
+	var dataTitle = dataToSend.split("</h1>")[0]
 	dataTitle = dataTitle.replace("<h1>","")
 	author = document.getElementById("author").value
 	category = document.getElementById("categorytext").value
 	dataToSendJSON = {
 		"title":dataTitle,
 		"author":author,
-		"content":dataContent,
+		"content":dataToSend,
 		"category":category
 	}
 	console.log(dataToSendJSON)
-	postData("/api/submit", dataToSendJSON)
+	alert(await postData("/api/submit", dataToSendJSON))
 }
 
 selector()

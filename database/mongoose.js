@@ -56,7 +56,7 @@ module.exports = {
         // if data dosen't exist make new category
         if(!icdata){
             var cate = new WikiPage({
-                name: data.category
+                name: {$eq:data.category}
             })
             cate.Wikis.push({
                 DateCreated: Date.now(),

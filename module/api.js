@@ -14,11 +14,12 @@ module.exports = async(g) => {
     })
     g.app.post(api+"submit",async (req, res) => {
         var data = req.body
-        res.json(await addWikiPage({
+        await addWikiPage({
             "title":data.title,
             "author":data.author,
             "content":data.content,
             "category":data.category
-        }))
+        })
+        res.send("0")
     })
 }

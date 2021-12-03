@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const {url,database,pass,user} = require('./security.json')
 const express = require('express')
 
-g.mongoose = require('mongoose')
+mongoose = require('mongoose')
 g.app = express()
 //Website port
 g.port = 80 
@@ -16,7 +16,14 @@ main().catch(err =>{console.error("Wiki failed to start");console.log(err)})
 
 async function main() {
     console.log("Starting Wiki")
-    await g.mongoose.connect(`${url}/${database}`);
+    try{
+    await mongoose.connect(`${url}/${database}`);
+    console.log("DB Connected")
+    }catch(err){
+        console.error("Failed to connet to DB")
+        console.error(err)
+        return
+    }
     var ar = ['api','express']
     ar.forEach(e=> {
         try{
