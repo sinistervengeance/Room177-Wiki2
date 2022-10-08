@@ -41,22 +41,19 @@ module.exports = {
     },
     addWikiPage: async function(data){
         //checks to see if data is empty
-        var val =0
-        if(!data.category){console.error("No Category");val ++}
-        if(!data.title){console.error("No Title");val++}
-        if(!data.author){console.error("No Author");val++}
-        if(!data.content){console.error("No Content");val++}
-        if(val > 0)return "5"
-
+        var val = 0
+        if(!data.category){val ++}
+        if(!data.title){val++}
+        if(!data.author){val++}
+        if(!data.content || data.content == `<h1>${data.title}</h1><p>&nbsp;</p>`){val++}
+        if(val > 0)return "2"
         //checks to see if data exist
-        WikiPage.findOne({
-            Category : data.category
-        },(err,icdata)=>{
-            if(err) throw err;
+        const icdata = await WikiPage.findOne({name : data.category})
         // if data dosen't exist make new category
+        console.log(icdata)
         if(!icdata){
             var cate = new WikiPage({
-                name: {$eq:data.category}
+                name: data.category
             })
             cate.Wikis.push({
                 DateCreated: Date.now(),
@@ -65,8 +62,10 @@ module.exports = {
                 Content: data.content,
                 IsDeleted: false
             })
-        cate.save()
-        // if data exist update array
+            console.log(cate)
+            await cate.save()
+            return "0"
+        // if category exist update array
         }else if(!icdata.Wikis.find(e => e.Title == data.title)){
             icdata.Wikis.push({
                 DateCreated: Date.now(),
@@ -75,9 +74,12 @@ module.exports = {
                 Content: data.content,
                 IsDeleted: false
             })
-            icdata.save()
+            await icdata.save()
+            return "0"
+        }else{
+            //if duplicate
+            return "4"
         }
-        })
     },
     //gets category and titles and then pushes into an array
     getContents: async function(){

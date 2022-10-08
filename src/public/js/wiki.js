@@ -89,14 +89,35 @@ async function sendDataToDB(){
 	dataTitle = dataTitle.replace("<h1>","")
 	author = document.getElementById("author").value
 	category = document.getElementById("categorytext").value
+	console.log(category)
 	dataToSendJSON = {
 		"title":dataTitle,
 		"author":author,
 		"content":dataToSend,
 		"category":category
 	}
-	console.log(dataToSendJSON)
-	alert(await postData("/api/submit", dataToSendJSON))
+	const response = await postData("/api/submit", dataToSendJSON)
+	console.log(response)
+	switch (response){
+		case 0:
+
+			break;
+		case 1:
+			alert("An Error has occured")
+			break;
+		case 2:
+			alert("Field is empty")
+			break;
+		case 3:
+			alert("Invalid Entry")
+			break;
+		case 4:
+			alert("Already Exist")
+			break;
+		case 5:
+			alert("Empty data output")
+			break;
+	}
 }
 
 selector()

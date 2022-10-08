@@ -6,6 +6,7 @@ async function content(){
         var content = await fetch(`/api/content`).then(response => response.json())
         console.log(content)
         var P =""
+        console.log(content)
         content.forEach(element => {
         var S =""
         element.Titles.forEach(e => {

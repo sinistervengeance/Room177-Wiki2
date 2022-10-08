@@ -6,7 +6,7 @@ const express = require('express')
 mongoose = require('mongoose')
 g.app = express()
 //Website port
-g.port = 80 
+g.port = 8080 
 
 g.app.use(bodyParser.json()) 
 g.app.use(bodyParser.urlencoded({ extended: true }))
